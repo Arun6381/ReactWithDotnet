@@ -1,0 +1,99 @@
+﻿/* Container for the Create Product Category form */
+.create-category-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+    /* Heading Style */
+    .create-category-container h2 {
+        text-align: center;
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+/* Message box (success/error messages) */
+.message {
+    text-align: center;
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual form groups */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+    .form-group label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+.input-field {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+    .input-field:focus {
+        border-color: #3498db;
+    }
+
+/* Submit button */
+.submit-button {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+    .submit-button:hover {
+        background-color: #2980b9;
+    }
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .create-category-container {
+        padding: 15px;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .input-field {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .submit-button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}

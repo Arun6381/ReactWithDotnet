@@ -1,0 +1,209 @@
+﻿
+
+
+
+.cart-table {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.cart-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.header-item {
+    text-align: center;
+    font-size: 16px;
+}
+
+.cart-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-cell {
+    text-align: center;
+    font-size: 14px;
+    padding: 8px;
+}
+
+.cart-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.no-items {
+    text-align: center;
+    padding: 20px;
+    color: #dc3545;
+}
+
+
+.cart-container {
+   
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+.cart-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .cart-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .cart-item h3 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #222;
+    }
+
+    .cart-item span,
+    .cart-item p {
+        font-size: 16px;
+        color: #444;
+    }
+
+        .cart-item p.price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .cart-item p.status {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 10px;
+        }
+
+.no-items {
+    font-size: 20px;
+    color: #dc3545;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Search bar and suggestion popup styling */
+.filter-container {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 20px;
+}
+
+    .filter-container input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s;
+    }
+
+        .filter-container input:focus {
+            border-color: #007bff;
+        }
+
+.suggestion-list {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding-left:-32px;
+    border-radius: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+    .suggestion-list li {
+        padding:10px 0;
+        font-size: 16px;
+        color: #333;
+        cursor: pointer;
+        list-style: none;
+        transition: background-color 0.2s;
+    }
+
+        .suggestion-list li:hover {
+            background-color: #f1f1f1;
+        }
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .pagination-button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+.pagination-info {
+    font-size: 16px;
+    color: #333;
+}
+#user-filter{
+    position:relative;
+
+}
+.clear-btn{
+    position:absolute;
+    right:10px;
+   top:11px;
+    z-index:1;
+}
+@media (max-width: 600px) {
+    .cart-table {
+       
+        overflow: scroll;
+    }
+}

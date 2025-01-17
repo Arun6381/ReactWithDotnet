@@ -1,0 +1,194 @@
+﻿@model IEnumerable<curdinStoredprocedure.Models.Productcategory>
+<div class="header">
+<h1 class="heading">Categories</h1>
+
+<div class="action-links">
+
+    <a asp-action="Create" class="button">Create Category</a>
+    @Html.ActionLink("Create Product", "Create", "ProductItem", new { }, new { @class = "button" })
+</div>
+</div>
+<div class="category-list">
+    <div class="category-item">
+        <a href="javascript:void(0);" onclick="loadAllProducts()" class="action-link">All Products</a>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="category-items">
+            <a href="javascript:void(0);" onclick="loadProducts(@item.CategoryId)" class="action-link">
+                <span class="category-name">@Html.DisplayFor(modelItem => item.CategoryName)</span>
+            </a>            
+            @* <div class="category-actions"> *@
+            @*     @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }, new { @class = "action-link" }) | *@
+            @*     @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, new { @class = "action-link" }) | *@
+            @*     <a href="javascript:void(0);" onclick="loadProducts(@item.CategoryId)" class="action-link"> *@
+            @*         <span class="category-name">@Html.DisplayFor(modelItem => item.CategoryName)</span> *@
+            @*     </a> *@
+            @* </div> *@
+        </div>
+    }
+</div>
+
+<div id="product-list-container" class="product-list-container">
+    <!-- Product list will be dynamically loaded here -->
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function loadProducts(categoryId) {
+        $.ajax({
+            url: '@Url.Action("GetProductByCategory", "ProductItem")',
+            type: 'GET',
+            data: { categoryId: categoryId },
+            success: function (data) {
+                if (typeof data === 'object' && data.success === false) {
+                    alert(data.message);
+                } else {
+                    $('#product-list-container').html(data);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to load products:', error);
+                alert('An error occurred while loading products.');
+            }
+        });
+    }
+
+    function loadAllProducts() {
+        $.ajax({
+            url: '@Url.Action("Index", "ProductItem")',
+            type: 'GET',
+            success: function (data) {
+                if (typeof data === 'object' && data.success === false) {
+                    alert(data.message);
+                } else {
+                    $('#product-list-container').html(data);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to load products:', error);
+                alert('An error occurred while loading products.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        loadAllProducts();
+    });
+
+
+    fetch('/api/productitems')
+    .then(response => response.json())
+    .then(data => {
+        console.log('Product Items:', data);
+        Process the data as needed
+    })
+    .catch(error => {
+        console.error('Error fetching product items:', error);
+    });
+
+</script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        color: #333;
+    }
+
+    .header{
+        display:flex;
+        justify-content:space-between;
+    }
+    .heading {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #444;
+    }
+
+    .action-links {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .button {
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .button:hover {
+        color:white;
+        background-color: #0056b3;
+    }
+
+    .category-list {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .category-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .category-items {
+        display: flex;
+        flex-direction:column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .category-item:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-name {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .category-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .action-link {
+        text-decoration: none;
+        color: #007bff;
+        font-size: 0.9rem;
+    }
+
+    .action-link:hover {
+        text-decoration: underline;
+    }
+
+    .product-list-container {
+        margin-top: 20px;
+        margin-bottom:40px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    .product-list-container:empty {
+        display: none;
+    }
+</style>

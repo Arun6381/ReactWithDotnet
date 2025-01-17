@@ -1,0 +1,114 @@
+﻿@model IEnumerable<curdinStoredprocedure.Models.ProductItems>
+
+@{
+    ViewData["Title"] = "GetProductByCategory";
+}
+
+<h1 class="heading">Products by Category</h1>
+
+<div class="product-actions">
+    <a asp-action="Create" asp-route-Categoryid="@ViewData["SelectedCategoryId"]" class="button">Create New</a>
+</div>
+
+<div class="product-list">
+    <div class="product-header">
+        <div class="product-column">Product Name</div>
+        <div class="product-column">Price</div>
+        <div class="product-column">Description</div>
+        <div class="product-column">Actions</div>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="product-item">
+            <div class="product-column">@Html.DisplayFor(modelItem => item.ProductName)</div>
+            <div class="product-column">@Html.DisplayFor(modelItem => item.Price)</div>
+            <div class="product-column">@Html.DisplayFor(modelItem => item.Description)</div>
+            <div class="product-column">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Product_Id }, new { @class = "action-link" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Product_Id }, new { @class = "action-link" })
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        color: #333;
+    }
+
+    .heading {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #444;
+    }
+
+    .product-actions {
+        margin-bottom: 20px;
+        text-align: right;
+    }
+
+    .button {
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+    .product-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .product-header {
+        display: flex;
+        background-color: #f2f2f2;
+        font-weight: bold;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .product-item {
+        display: flex;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        align-items: center;
+    }
+
+        .product-item:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .product-column {
+        flex: 1;
+        padding: 5px;
+        text-align: center;
+    }
+
+        .product-column:last-child {
+            flex: 1.5;
+        }
+
+    .action-link {
+        text-decoration: none;
+        color: #007bff;
+        font-size: 0.9rem;
+    }
+
+        .action-link:hover {
+            text-decoration: underline;
+        }
+</style>

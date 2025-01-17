@@ -1,0 +1,87 @@
+﻿/* General container styles */
+.categories-container {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 0;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Button group styles */
+.btn-group {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    button.btn-clear {
+        background-color: #17a2b8;
+        color: #fff;
+    }
+
+        button.btn-clear:hover {
+            background-color: #138496;
+        }
+
+    button.btn-category {
+        background-color: #e7e7e7;
+        color: #333;
+    }
+
+        button.btn-category:hover {
+            background-color: #c6c6c6;
+        }
+
+    button.btn-sm {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .btn-group {
+        justify-content: center; /* Center buttons on tablets and smaller screens */
+    }
+
+    button {
+        font-size: 1rem; /* Slightly larger buttons on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-group {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        align-items: center; /* Center the buttons when stacked */
+    }
+
+    button {
+        width: 100%; /* Make buttons take full width when stacked */
+        font-size: 1rem; /* Adjust button font size */
+    }
+
+        button.btn-sm {
+            font-size: 1rem; /* Ensure small buttons are consistent */
+            padding: 8px 16px; /* Adjust padding for better readability */
+        }
+}
