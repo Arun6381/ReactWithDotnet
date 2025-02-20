@@ -19,6 +19,7 @@ public class AuthController : ControllerBase
 
     public AuthController(JwtTokenService jwtTokenService, UserDataAccess userDataAccess)
     {
+    //for jwt token genteration
         _jwtTokenService = jwtTokenService;
         _userDataAccess = userDataAccess;
     }
